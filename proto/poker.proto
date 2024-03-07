@@ -63,12 +63,12 @@ message Player {
 }
 
 message RegisterRequest {
-    string bot_name = 1;
+    string player_guid = 1;
+    uint64 decision_timeout_seconds = 2;
 }
 
 message RegisterResponse {
-    string player_guid = 1;
-    uint64 decision_timeout_seconds = 2;
+    string bot_name = 1;
 }
 
 message ActionRequest {
