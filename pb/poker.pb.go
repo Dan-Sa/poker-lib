@@ -20,6 +20,143 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type Rank int32
+
+const (
+	Rank_UNKNOWN_Rank Rank = 0
+	Rank_Ace          Rank = 1
+	Rank_Two          Rank = 2
+	Rank_Three        Rank = 3
+	Rank_Four         Rank = 4
+	Rank_Five         Rank = 5
+	Rank_Six          Rank = 6
+	Rank_Severn       Rank = 7
+	Rank_Eight        Rank = 8
+	Rank_Nine         Rank = 9
+	Rank_Ten          Rank = 10
+	Rank_Jack         Rank = 11
+	Rank_Queen        Rank = 12
+	Rank_King         Rank = 13
+)
+
+// Enum value maps for Rank.
+var (
+	Rank_name = map[int32]string{
+		0:  "UNKNOWN_Rank",
+		1:  "Ace",
+		2:  "Two",
+		3:  "Three",
+		4:  "Four",
+		5:  "Five",
+		6:  "Six",
+		7:  "Severn",
+		8:  "Eight",
+		9:  "Nine",
+		10: "Ten",
+		11: "Jack",
+		12: "Queen",
+		13: "King",
+	}
+	Rank_value = map[string]int32{
+		"UNKNOWN_Rank": 0,
+		"Ace":          1,
+		"Two":          2,
+		"Three":        3,
+		"Four":         4,
+		"Five":         5,
+		"Six":          6,
+		"Severn":       7,
+		"Eight":        8,
+		"Nine":         9,
+		"Ten":          10,
+		"Jack":         11,
+		"Queen":        12,
+		"King":         13,
+	}
+)
+
+func (x Rank) Enum() *Rank {
+	p := new(Rank)
+	*p = x
+	return p
+}
+
+func (x Rank) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (Rank) Descriptor() protoreflect.EnumDescriptor {
+	return file_poker_proto_enumTypes[0].Descriptor()
+}
+
+func (Rank) Type() protoreflect.EnumType {
+	return &file_poker_proto_enumTypes[0]
+}
+
+func (x Rank) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use Rank.Descriptor instead.
+func (Rank) EnumDescriptor() ([]byte, []int) {
+	return file_poker_proto_rawDescGZIP(), []int{0}
+}
+
+type Suit int32
+
+const (
+	Suit_UNKNOWN_Suit Suit = 0
+	Suit_Spades       Suit = 1
+	Suit_Dimonds      Suit = 2
+	Suit_Clubs        Suit = 3
+	Suit_Hearts       Suit = 4
+)
+
+// Enum value maps for Suit.
+var (
+	Suit_name = map[int32]string{
+		0: "UNKNOWN_Suit",
+		1: "Spades",
+		2: "Dimonds",
+		3: "Clubs",
+		4: "Hearts",
+	}
+	Suit_value = map[string]int32{
+		"UNKNOWN_Suit": 0,
+		"Spades":       1,
+		"Dimonds":      2,
+		"Clubs":        3,
+		"Hearts":       4,
+	}
+)
+
+func (x Suit) Enum() *Suit {
+	p := new(Suit)
+	*p = x
+	return p
+}
+
+func (x Suit) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (Suit) Descriptor() protoreflect.EnumDescriptor {
+	return file_poker_proto_enumTypes[1].Descriptor()
+}
+
+func (Suit) Type() protoreflect.EnumType {
+	return &file_poker_proto_enumTypes[1]
+}
+
+func (x Suit) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use Suit.Descriptor instead.
+func (Suit) EnumDescriptor() ([]byte, []int) {
+	return file_poker_proto_rawDescGZIP(), []int{1}
+}
+
 type Empty struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -58,12 +195,86 @@ func (*Empty) Descriptor() ([]byte, []int) {
 	return file_poker_proto_rawDescGZIP(), []int{0}
 }
 
+type Card struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Rank Rank `protobuf:"varint,1,opt,name=rank,proto3,enum=pb.Rank" json:"rank,omitempty"`
+	Suit Suit `protobuf:"varint,2,opt,name=suit,proto3,enum=pb.Suit" json:"suit,omitempty"`
+}
+
+func (x *Card) Reset() {
+	*x = Card{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_poker_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Card) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Card) ProtoMessage() {}
+
+func (x *Card) ProtoReflect() protoreflect.Message {
+	mi := &file_poker_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Card.ProtoReflect.Descriptor instead.
+func (*Card) Descriptor() ([]byte, []int) {
+	return file_poker_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *Card) GetRank() Rank {
+	if x != nil {
+		return x.Rank
+	}
+	return Rank_UNKNOWN_Rank
+}
+
+func (x *Card) GetSuit() Suit {
+	if x != nil {
+		return x.Suit
+	}
+	return Suit_UNKNOWN_Suit
+}
+
 var File_poker_proto protoreflect.FileDescriptor
 
 var file_poker_proto_rawDesc = []byte{
 	0x0a, 0x0b, 0x70, 0x6f, 0x6b, 0x65, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x02, 0x70,
-	0x62, 0x22, 0x07, 0x0a, 0x05, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x42, 0x06, 0x5a, 0x04, 0x2e, 0x2f,
-	0x70, 0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x62, 0x22, 0x07, 0x0a, 0x05, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22, 0x42, 0x0a, 0x04, 0x43, 0x61,
+	0x72, 0x64, 0x12, 0x1c, 0x0a, 0x04, 0x72, 0x61, 0x6e, 0x6b, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0e,
+	0x32, 0x08, 0x2e, 0x70, 0x62, 0x2e, 0x52, 0x61, 0x6e, 0x6b, 0x52, 0x04, 0x72, 0x61, 0x6e, 0x6b,
+	0x12, 0x1c, 0x0a, 0x04, 0x73, 0x75, 0x69, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x08,
+	0x2e, 0x70, 0x62, 0x2e, 0x53, 0x75, 0x69, 0x74, 0x52, 0x04, 0x73, 0x75, 0x69, 0x74, 0x2a, 0x9b,
+	0x01, 0x0a, 0x04, 0x52, 0x61, 0x6e, 0x6b, 0x12, 0x10, 0x0a, 0x0c, 0x55, 0x4e, 0x4b, 0x4e, 0x4f,
+	0x57, 0x4e, 0x5f, 0x52, 0x61, 0x6e, 0x6b, 0x10, 0x00, 0x12, 0x07, 0x0a, 0x03, 0x41, 0x63, 0x65,
+	0x10, 0x01, 0x12, 0x07, 0x0a, 0x03, 0x54, 0x77, 0x6f, 0x10, 0x02, 0x12, 0x09, 0x0a, 0x05, 0x54,
+	0x68, 0x72, 0x65, 0x65, 0x10, 0x03, 0x12, 0x08, 0x0a, 0x04, 0x46, 0x6f, 0x75, 0x72, 0x10, 0x04,
+	0x12, 0x08, 0x0a, 0x04, 0x46, 0x69, 0x76, 0x65, 0x10, 0x05, 0x12, 0x07, 0x0a, 0x03, 0x53, 0x69,
+	0x78, 0x10, 0x06, 0x12, 0x0a, 0x0a, 0x06, 0x53, 0x65, 0x76, 0x65, 0x72, 0x6e, 0x10, 0x07, 0x12,
+	0x09, 0x0a, 0x05, 0x45, 0x69, 0x67, 0x68, 0x74, 0x10, 0x08, 0x12, 0x08, 0x0a, 0x04, 0x4e, 0x69,
+	0x6e, 0x65, 0x10, 0x09, 0x12, 0x07, 0x0a, 0x03, 0x54, 0x65, 0x6e, 0x10, 0x0a, 0x12, 0x08, 0x0a,
+	0x04, 0x4a, 0x61, 0x63, 0x6b, 0x10, 0x0b, 0x12, 0x09, 0x0a, 0x05, 0x51, 0x75, 0x65, 0x65, 0x6e,
+	0x10, 0x0c, 0x12, 0x08, 0x0a, 0x04, 0x4b, 0x69, 0x6e, 0x67, 0x10, 0x0d, 0x2a, 0x48, 0x0a, 0x04,
+	0x53, 0x75, 0x69, 0x74, 0x12, 0x10, 0x0a, 0x0c, 0x55, 0x4e, 0x4b, 0x4e, 0x4f, 0x57, 0x4e, 0x5f,
+	0x53, 0x75, 0x69, 0x74, 0x10, 0x00, 0x12, 0x0a, 0x0a, 0x06, 0x53, 0x70, 0x61, 0x64, 0x65, 0x73,
+	0x10, 0x01, 0x12, 0x0b, 0x0a, 0x07, 0x44, 0x69, 0x6d, 0x6f, 0x6e, 0x64, 0x73, 0x10, 0x02, 0x12,
+	0x09, 0x0a, 0x05, 0x43, 0x6c, 0x75, 0x62, 0x73, 0x10, 0x03, 0x12, 0x0a, 0x0a, 0x06, 0x48, 0x65,
+	0x61, 0x72, 0x74, 0x73, 0x10, 0x04, 0x42, 0x06, 0x5a, 0x04, 0x2e, 0x2f, 0x70, 0x62, 0x62, 0x06,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -78,16 +289,22 @@ func file_poker_proto_rawDescGZIP() []byte {
 	return file_poker_proto_rawDescData
 }
 
-var file_poker_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_poker_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
+var file_poker_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_poker_proto_goTypes = []interface{}{
-	(*Empty)(nil), // 0: pb.Empty
+	(Rank)(0),     // 0: pb.Rank
+	(Suit)(0),     // 1: pb.Suit
+	(*Empty)(nil), // 2: pb.Empty
+	(*Card)(nil),  // 3: pb.Card
 }
 var file_poker_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	0, // 0: pb.Card.rank:type_name -> pb.Rank
+	1, // 1: pb.Card.suit:type_name -> pb.Suit
+	2, // [2:2] is the sub-list for method output_type
+	2, // [2:2] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_poker_proto_init() }
@@ -108,19 +325,32 @@ func file_poker_proto_init() {
 				return nil
 			}
 		}
+		file_poker_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Card); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_poker_proto_rawDesc,
-			NumEnums:      0,
-			NumMessages:   1,
+			NumEnums:      2,
+			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
 		GoTypes:           file_poker_proto_goTypes,
 		DependencyIndexes: file_poker_proto_depIdxs,
+		EnumInfos:         file_poker_proto_enumTypes,
 		MessageInfos:      file_poker_proto_msgTypes,
 	}.Build()
 	File_poker_proto = out.File
