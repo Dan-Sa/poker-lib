@@ -29,7 +29,71 @@ enum Suit {
     Hearts = 4;
 }
 
+enum State {
+    UNKNOWN_State = 0;
+    Active = 1;
+    Folded = 2;
+    Called = 3;
+}
+
+enum Action {
+    UNKNOWN_Action = 0;
+    Fold = 1;
+
+    // Bet refers to both betting and raising
+    Bet = 2;
+}
+
 message Card {
     Rank rank = 1;
     Suit suit = 2;
+}
+
+message Pot {
+    uint64 size = 1;
+    repeated string players = 2;
+}
+
+message Player {
+    string guid = 1;
+    string name = 2;
+    State state = 3;
+    uint64 bank = 4;
+    uint64 bet_so_far = 5;
+}
+
+message RegisterRequest {
+    string bot_name = 1;
+}
+
+message RegisterResponse {
+    string player_guid = 1;
+    uint64 decision_timeout_seconds = 2;
+}
+
+message ActionRequest {
+    // Players at the table
+    repeated Player players = 1;
+
+    // Cards on the board inc player's hole cards
+    repeated Card hole_cards = 2;
+    repeated Card flop = 3;
+    Card turn = 4;
+    Card river = 5;
+
+    // Chips on the table
+    repeated Pot pots = 6;
+    uint64 bet_so_far = 7;
+    uint64 bet_to_player = 8;
+    uint64 min_raise = 9;
+}
+
+message ActionResponse {
+    Action action = 1;
+    uint64 amount = 2;
+}
+
+service Plugin {
+    rpc Register(RegisterRequest) returns (RegisterResponse);
+    rpc Action(ActionRequest) returns (ActionResponse);
 }
