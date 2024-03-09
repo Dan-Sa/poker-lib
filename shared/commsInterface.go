@@ -14,10 +14,6 @@ var Handshake = plugin.HandshakeConfig{
 	MagicCookieValue: "all-in",
 }
 
-var PluginMap = map[string]plugin.Plugin{
-	"bot": &ConcretePlugin{},
-}
-
 // This is the interface that is exposing as a plugin.
 type Plugin interface {
 	Register(
