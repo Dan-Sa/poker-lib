@@ -36,6 +36,9 @@ func (m *GRPCClient) Action(
 		BetSoFar:    uint64(bet_so_far),
 		BetToPlayer: uint64(bet_to_player),
 		MinRaise:    uint64(min_raise),
+		Flop:        make([]*proto.Card, 0),
+		Turn:        &proto.Card{},
+		River:       &proto.Card{},
 	}
 
 	// Parse Cards

@@ -59,6 +59,9 @@ func ParseCardToStruct(c *proto.Card) *Card {
 	if c == nil {
 		return nil
 	}
+	if c.Rank == proto.Rank_UNKNOWN_Rank || c.Suit == proto.Suit_UNKNOWN_Suit {
+		return nil
+	}
 	return &Card{
 		Rank: c.Rank,
 		Suit: c.Suit,
