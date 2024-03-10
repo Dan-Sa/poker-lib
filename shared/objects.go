@@ -51,7 +51,7 @@ type Card struct {
 func (c *Card) String() string {
 	ranks := "~~23456789TJQKA"
 	suits := "~sdch"
-	return ranks[c.Rank:1] + suits[c.Suit:1]
+	return ranks[c.Rank:c.Rank+1] + suits[c.Suit:c.Suit+1]
 }
 
 func (c *Card) ParseToProto() *proto.Card {
