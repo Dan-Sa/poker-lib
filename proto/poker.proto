@@ -6,6 +6,7 @@ message Empty {}
 
 enum Rank {
     UNKNOWN_Rank = 0;
+    AceLow = 1;
     Two = 2;
     Three = 3;
     Four = 4;
