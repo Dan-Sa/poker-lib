@@ -5,7 +5,7 @@ import (
 )
 
 type Player struct {
-	guid     string
+	Guid     string
 	Name     string
 	State    proto.State
 	Bank     uint
@@ -14,7 +14,7 @@ type Player struct {
 
 func (p *Player) ParseToProto() *proto.Player {
 	return &proto.Player{
-		Guid:     p.guid,
+		Guid:     p.Guid,
 		Name:     p.Name,
 		State:    p.State,
 		Bank:     uint64(p.Bank),
@@ -27,7 +27,7 @@ func ParsePlayerToStruct(p *proto.Player) *Player {
 		return nil
 	}
 	return &Player{
-		guid:     p.Guid,
+		Guid:     p.Guid,
 		Name:     p.Name,
 		State:    p.State,
 		Bank:     uint(p.Bank),
