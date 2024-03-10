@@ -77,10 +77,19 @@ func (m *GRPCServer) Register(
 func (m *GRPCServer) Action(
 	ctx context.Context,
 	req *proto.ActionRequest) (*proto.ActionResponse, error) {
+
+	board := ParseBoardToStruct(req.Flop)
+	if t := ParseCardToStruct(req.Turn); t != nil {
+		board = append(board, t)
+	}
+	if r := ParseCardToStruct(req.River); r != nil {
+		board = append(board, r)
+	}
+
 	action, amount, err := m.Impl.Action(
 		ParsePlayerListToStruc(req.Players),
 		ParseBoardToStruct(req.HoleCards),
-		append(ParseBoardToStruct(req.Flop), ParseCardToStruct(req.Turn), ParseCardToStruct(req.River)),
+		board,
 		ParsePotListToStruct(req.Pots),
 		uint(req.BetSoFar),
 		uint(req.BetToPlayer),
