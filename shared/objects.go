@@ -48,6 +48,12 @@ type Card struct {
 	Suit proto.Suit
 }
 
+func (c *Card) String() string {
+	ranks := "~~23456789TJQKA"
+	suits := "~sdch"
+	return ranks[c.Rank:1] + suits[c.Suit:1]
+}
+
 func (c *Card) ParseToProto() *proto.Card {
 	return &proto.Card{
 		Rank: c.Rank,
