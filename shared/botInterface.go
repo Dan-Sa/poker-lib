@@ -14,7 +14,7 @@ type Bot interface {
 		players []*Player,
 		hole_cards, board []*Card,
 		pots []*Pot,
-		bet_so_far, bet_to_player, min_raise uint,
+		bet_so_far, bet_to_player_this_round, min_raise uint,
 	) (proto.Action, uint)
 }
 
