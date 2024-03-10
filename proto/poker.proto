@@ -6,7 +6,6 @@ message Empty {}
 
 enum Rank {
     UNKNOWN_Rank = 0;
-    Ace = 1;
     Two = 2;
     Three = 3;
     Four = 4;
@@ -19,6 +18,7 @@ enum Rank {
     Jack = 11;
     Queen = 12;
     King = 13;
+    Ace = 14;
 }
 
 enum Suit {
