@@ -74,8 +74,6 @@ func (m *GRPCServer) Register(
 func (m *GRPCServer) Action(
 	ctx context.Context,
 	req *proto.ActionRequest) (*proto.ActionResponse, error) {
-	// TODO: Take items from req and parse them into what is needed by Action: Proto -> struct
-
 	action, amount, err := m.Impl.Action(
 		ParsePlayerListToStruc(req.Players),
 		ParseBoardToStruct(req.HoleCards),
